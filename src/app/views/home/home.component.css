@@ -1,0 +1,16 @@
+.toolbar_espace {
+    flex: 1 1 auto;
+}
+
+.toolbar_text {
+    font-size: 30px;
+}
+
+.toolbar {
+    height: 100px;
+}
+
+.form_espace {
+    padding-right: 25px;
+    padding-left: 25px;
+}
