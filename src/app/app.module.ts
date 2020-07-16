@@ -12,12 +12,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NotasFormComponent } from './views/home/notas-form/notas-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotasComponent
+    NotasComponent,
+    NotasFormComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatTabsModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,16 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { NotaService } from 'src/app/shared/service/nota.service';
+import { Nota } from 'src/app/shared/model/nota.model';
+import { NotasFormComponent } from '../notas-form/notas-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-notas',
   templateUrl: './notas.component.html',
   styleUrls: ['./notas.component.css']
 })
+
 export class NotasComponent implements OnInit {
-
-  constructor( public notaService: NotaService ) { }
-  
+  notas: Nota[];
+  notasImportantes: Nota[] = [];
+  notasPessoais: Nota[] = [];
+  notasComuns: Nota[] = [];
+  constructor(public notaService: NotaService, public dialog: MatDialog) { }
   ngOnInit(): void {
+    this.getNotas();
   }
-
+  marcandoNotas() {
+    this.notas.forEach(nota => {
+      if (nota.marcador == "importante") {
+        this.notasImportantes.push(nota);
+      } else if (nota.marcador == "pessoal") {
+        this.notasPessoais.push(nota);
+      } else {
+        this.notasComuns.push(nota);
+      }
+    })
+  }
+  getNotas() {
+    this.notaService.getNotas().subscribe(data => {
+      this.notas = data;
+      this.marcandoNotas();
+    });
+  }
+  editarNota(): void { const dialogRef = this.dialog.open(NotasFormComponent); }
 }

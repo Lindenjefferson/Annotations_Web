@@ -10,7 +10,7 @@ import { Nota } from '../model/nota.model'
 export class NotaService {
   apiUrl = 'https://annotations-api.herokuapp.com/notas';
   constructor(private httpClient: HttpClient) { }
-  public getNotas(): Observable<Nota> {
-    return this.httpClient.get<Nota>(this.apiUrl)
+  public getNotas(): Observable<Nota[]> {
+    return this.httpClient.get<Nota[]>(this.apiUrl)
   }
 }
