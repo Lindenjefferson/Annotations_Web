@@ -1,23 +1,25 @@
 <h1 mat-dialog-title> Nova nota </h1>
 <div mat-dialog-content>
-    <mat-form-field appearance="fill">
-        <mat-label> Titulo </mat-label>
-        <input matInput placeholder="" formControlName="titulo">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label> Conteudo </mat-label>
-        <textarea matInput placeholder="" formControlName="conteudo"></textarea>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label> Categoria </mat-label>
-        <mat-select formControlName="categoria">
-            <mat-option value="comum">Sem tag</mat-option>
-            <mat-option value="importante">Importante</mat-option>
-            <mat-option value="pessoal">Pessoal</mat-option>
-        </mat-select>
-    </mat-form-field>
+    <form [formGroup]="notaForm">
+        <mat-form-field appearance="fill">
+            <mat-label> Titulo </mat-label>
+            <input matInput placeholder="" formControlName="titulo">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label> Conteudo </mat-label>
+            <textarea matInput placeholder="" formControlName="conteudo"></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label> Categoria </mat-label>
+            <mat-select formControlName="marcador">
+                <mat-option value="comum">Sem tag</mat-option>
+                <mat-option value="importante">Importante</mat-option>
+                <mat-option value="pessoal">Pessoal</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="cancel()"> Cancelar </button>
