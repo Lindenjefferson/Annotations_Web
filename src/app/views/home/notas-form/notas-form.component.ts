@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Nota } from 'src/app/shared/model/nota.model';
 import { NotaService } from 'src/app/shared/service/nota.service';
 
@@ -11,29 +11,35 @@ import { NotaService } from 'src/app/shared/service/nota.service';
 })
 
 export class NotasFormComponent implements OnInit {
+  
   public notaForm: FormGroup;
-
+  
   constructor(
     public dialogRef: MatDialogRef<NotasFormComponent>,
     private fb: FormBuilder,
-    private api: NotaService
+    private api: NotaService,
+    @Inject(MAT_DIALOG_DATA) public data : any
   ) { }
 
   ngOnInit(): void {
-    this.createNota(new Nota())
-   }
+    this.verificar();
+  }
+  
+  verificar() {
+    if (this.data.nota == null) {
+      this.criar(new Nota());
+    } else {
+      this.criar(this.data.nota);
+    }
+  }
 
-  createNota(nota : Nota) {
+  criar(nota : Nota) {
     this.notaForm = this.fb.group({
+      id: [nota.id],
       titulo: [nota.titulo],
       conteudo: [nota.conteudo],
       marcador: [nota.marcador]
     })
-  }
-
-  cancel(): void { 
-    this.dialogRef.close(); 
-    this.notaForm.reset();
   }
 
   adicionar(): void { 
@@ -42,4 +48,18 @@ export class NotasFormComponent implements OnInit {
     this.notaForm.reset;
     location.reload();
   }
+
+  atualizar(): void {
+    this.api.putNota(this.notaForm.value, this.notaForm.value.id).subscribe(result => { });
+    this.dialogRef.close(true);
+    this.notaForm.reset;
+    location.reload();
+  }
+
+  deletar(): void {
+    this.api.deleteNota(this.notaForm.value.id).subscribe(result => { 
+      location.reload();
+    });    
+  }
+
 }

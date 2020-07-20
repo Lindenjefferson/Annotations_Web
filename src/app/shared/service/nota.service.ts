@@ -19,4 +19,12 @@ export class NotaService {
     return this.httpClient.post<Nota>(this.apiUrl, nota)
   }
 
+  public putNota(nota: Nota, id : String): Observable<Nota> {
+    return this.httpClient.put<Nota>(this.apiUrl + '/' + id, nota)
+  }
+
+  public deleteNota(id : String) {
+    return this.httpClient.delete(this.apiUrl + '/' + id)
+  }
+
 }
