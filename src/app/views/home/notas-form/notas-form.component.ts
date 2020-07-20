@@ -43,17 +43,20 @@ export class NotasFormComponent implements OnInit {
   }
 
   adicionar(): void { 
-    this.api.postNota(this.notaForm.value).subscribe(result => {});
-    this.dialogRef.close(true);
-    this.notaForm.reset;
-    location.reload();
+    this.api.postNota(this.notaForm.value).subscribe(result => {
+      this.dialogRef.close(true);
+      this.notaForm.reset;
+      location.reload();
+    });
   }
 
   atualizar(): void {
-    this.api.putNota(this.notaForm.value, this.notaForm.value.id).subscribe(result => { });
-    this.dialogRef.close(true);
-    this.notaForm.reset;
-    location.reload();
+    this.api.putNota(this.notaForm.value, this.notaForm.value.id).subscribe(result => {
+      this.dialogRef.close(true);
+      this.notaForm.reset;
+      location.reload();
+    });
+    
   }
 
   deletar(): void {
