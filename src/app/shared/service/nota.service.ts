@@ -27,4 +27,8 @@ export class NotaService {
     return this.httpClient.delete(this.apiUrl + '/' + id)
   }
 
+  public buscaNota(titulo : String) {
+    return this.httpClient.get<Nota[]>(this.apiUrl + '/busca/' + titulo)
+  }
+
 }

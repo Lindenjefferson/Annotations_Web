@@ -3,12 +3,14 @@
         <span class="toolbar_text"> Annotations </span>
         <span class="toolbar_espace"></span>
         <button mat-raised-button (click)="adicionarNota()" color="primary"> Adicionar nota </button>
-        <mat-form-field class="form_espace">
-            <mat-label> Busca </mat-label>
-            <input matInput type="text" value="">
-        </mat-form-field>
-        <button mat-raised-button color="primary"> Buscar </button>
+        <form [formGroup]="busca" > 
+            <mat-form-field class="form_espace">
+                <mat-label> Busca </mat-label>
+                <input matInput type="text" formControlName="campoBusca">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="buscarNota()"> Buscar </button>
+        </form>
     </mat-toolbar-row>
 </mat-toolbar>
 
-<app-notas> </app-notas>
+<app-notas busca={{valorBusca}}> </app-notas>
