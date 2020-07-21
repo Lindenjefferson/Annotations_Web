@@ -34,7 +34,7 @@ export class NotasComponent implements OnInit {
 
   marcandoNotas() {
     this.notasComuns = [];
-    this.notasPessoais = [];
+    this.notasImportantes = [];
     this.notasPessoais = [];
     this.notas.forEach(nota => {
       if (nota.marcador == "importante") {
