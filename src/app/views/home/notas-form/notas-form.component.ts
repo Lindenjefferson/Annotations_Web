@@ -43,20 +43,23 @@ export class NotasFormComponent implements OnInit {
   }
 
   adicionar(): void { 
-    this.api.postNota(this.notaForm.value).subscribe(result => {
-      this.dialogRef.close(true);
-      this.notaForm.reset;
-      location.reload();
-    });
+    if (this.notaForm.value.conteudo != null) {
+      this.api.postNota(this.notaForm.value).subscribe(result => {
+        this.dialogRef.close(true);
+        this.notaForm.reset;
+        location.reload();
+      });
+    } else confirm("Nenhum conteudo foi digitado");
   }
 
   atualizar(): void {
-    this.api.putNota(this.notaForm.value, this.notaForm.value.id).subscribe(result => {
-      this.dialogRef.close(true);
-      this.notaForm.reset;
-      location.reload();
-    });
-    
+    if (this.notaForm.value.conteudo != "") {
+      this.api.putNota(this.notaForm.value, this.notaForm.value.id).subscribe(result => {
+        this.dialogRef.close(true);
+        this.notaForm.reset;
+        location.reload();
+      });
+    } else confirm("Nenhum conteudo foi digitado");
   }
 
   deletar(): void {
