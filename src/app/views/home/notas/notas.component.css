@@ -9,3 +9,7 @@
     margin: 10px;
     max-width: 300px;
 }
+
+.breakWord {
+    word-break: break-word;
+}
