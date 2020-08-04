@@ -2,6 +2,10 @@
     padding: 2%;
 }
 
+.mat-card {
+    float: left;
+}
+
 .mat-card-space {
     border: 1px solid gray;
     border-radius: 10px;

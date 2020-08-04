@@ -1,6 +1,6 @@
 <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Comuns">
-        <div fxLayout="row" fxLayoutAlign="center center" class="div-space"> 
+        <div class="div-space"> 
             <ng-container *ngFor="let nota of notasComuns">
                 <mat-card (click)="editarNota(nota.id)" class="mat-card-space breakWord">
                     <mat-card-header>
@@ -14,7 +14,7 @@
         </div>
     </mat-tab>
     <mat-tab label="Importantes">
-        <div fxLayout="row" fxLayoutAlign="center center" class="div-space">
+        <div class="div-space">
             <ng-container *ngFor="let nota of notasImportantes">
                 <mat-card (click)="editarNota(nota.id)" class="mat-card-space breakWord">
                     <mat-card-header>
@@ -28,7 +28,7 @@
         </div>
     </mat-tab>
     <mat-tab label="Pessoais">
-        <div fxLayout="row" fxLayoutAlign="center center" class="div-space">
+        <div class="div-space">
             <ng-container *ngFor="let nota of notasPessoais">
                 <mat-card (click)="editarNota(nota.id)" class="mat-card-space breakWord">
                     <mat-card-header>
